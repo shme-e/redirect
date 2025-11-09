@@ -10,7 +10,7 @@ services:
       - 3000:3000
     restart: unless-stopped
     environment:
-      - ORIGIN=http://redirect-gui.shmee.codes
+      - ORIGIN=https://redirect-gui.shmee.codes
     networks:
       - apps
   caddy:
