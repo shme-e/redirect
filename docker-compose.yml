@@ -1,5 +1,6 @@
 services:
   app:
+    container_name: redirect-app
     build: 
       context: .
       dockerfile: Dockerfile
@@ -12,8 +13,8 @@ services:
       - ORIGIN=http://redirect-gui.shmee.codes
     networks:
       - redirect
-    name: redirect-app
   caddy:
+    container_name: redirect-caddy
     image: caddy:latest
     restart: unless-stopped
     ports:
@@ -24,7 +25,6 @@ services:
       - caddy_config:/config
     networks:
       - redirect
-    name: redirect-caddy
 
 name: redirect
 
