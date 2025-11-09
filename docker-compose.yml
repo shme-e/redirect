@@ -12,6 +12,7 @@ services:
       - ORIGIN=http://redirect-gui.shmee.codes
     networks:
       - redirect
+    name: redirect-app
   caddy:
     image: caddy:latest
     restart: unless-stopped
@@ -23,6 +24,7 @@ services:
       - caddy_config:/config
     networks:
       - redirect
+    name: redirect-caddy
 
 name: redirect
 
