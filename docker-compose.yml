@@ -6,8 +6,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - redirect:/redirect
-    ports:
-      - 3000:3000
     restart: unless-stopped
     environment:
       - ORIGIN=https://redirect-gui.shmee.codes
@@ -17,8 +15,6 @@ services:
     container_name: redirect-caddy
     image: caddy:latest
     restart: unless-stopped
-    ports:
-      - "3001:3001"
     volumes:
       - ./caddy/conf:/etc/caddy
       - caddy_data:/data
