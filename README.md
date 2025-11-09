@@ -21,3 +21,5 @@ open in dev container
 # deployment
 
 uses the top level docker compose
+
+requires docker network apps to plug into

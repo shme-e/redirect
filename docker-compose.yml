@@ -12,7 +12,7 @@ services:
     environment:
       - ORIGIN=http://redirect-gui.shmee.codes
     networks:
-      - redirect
+      - apps
   caddy:
     container_name: redirect-caddy
     image: caddy:latest
@@ -24,7 +24,7 @@ services:
       - caddy_data:/data
       - caddy_config:/config
     networks:
-      - redirect
+      - apps
 
 name: redirect
 
@@ -34,6 +34,5 @@ volumes:
   caddy_config:
 
 networks:
-  redirect:
-    name: redirect
-    driver: bridge
+  apps:
+    external: true
