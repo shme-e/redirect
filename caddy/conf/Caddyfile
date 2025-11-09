@@ -3,3 +3,9 @@
         rewrite /redirect-me
     }
 }
+
+:3001 {
+    reverse_proxy app:3000 {
+        rewrite /redirect-me
+    }
+}

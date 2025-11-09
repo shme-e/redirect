@@ -1,0 +1,37 @@
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - redirect:/redirect
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    environment:
+      - ORIGIN=http://redirect-gui.shmee.codes
+    networks:
+      - redirect
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./caddy/conf:/etc/caddy
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - redirect
+
+name: redirect
+
+volumes:
+  redirect:
+  caddy_data:
+  caddy_config:
+
+networks:
+  redirect:
+    name: redirect
+    driver: bridge
