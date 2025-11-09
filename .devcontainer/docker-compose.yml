@@ -1,0 +1,15 @@
+services:
+  devcontainer:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - redirect:/redirect
+      - ../..:/workspaces:cached
+    ports:
+      - 5173:5173
+      - 5174:5174
+    command: bash -c "chmod 777 /redirect && sleep infinity"
+
+volumes:
+  redirect:
